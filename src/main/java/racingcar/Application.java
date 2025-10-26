@@ -10,17 +10,20 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
         long count = Long.parseLong(Console.readLine());
         String[] cars = input.split(",");
-        long[] goCount = new long[cars.length];
+        int[] goCount = new int[cars.length];
         int i = 0;
+        String value = "-";
         while(i < count){
             for(int j = 0; j < cars.length; j++){
                 int random = Randoms.pickNumberInRange(0,9);
                 attemptToMove(goCount,j,random);
+                System.out.println(value.repeat(goCount[j]));
             }
+            System.out.println();
         }
     }
 
-    static void attemptToMove(long[] goCount,int goCount_index, int random){
+    static void attemptToMove(int[] goCount,int goCount_index, int random){
         if(random >= 4)
             goCount[goCount_index]++;
     }
