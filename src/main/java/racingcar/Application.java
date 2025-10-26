@@ -20,6 +20,7 @@ public class Application {
                 System.out.println(value.repeat(goCount[j]));
             }
             System.out.println();
+            i++;
         }
     }
 
