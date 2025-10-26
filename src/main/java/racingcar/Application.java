@@ -12,12 +12,11 @@ public class Application {
         String[] cars = input.split(",");
         int[] goCount = new int[cars.length];
         int i = 0;
-        String value = "-";
         while(i < count){
             for(int j = 0; j < cars.length; j++){
                 int random = Randoms.pickNumberInRange(0,9);
                 attemptToMove(goCount,j,random);
-                System.out.println(value.repeat(goCount[j]));
+                System.out.println(cars[j] + " : " + "-".repeat(goCount[j]));
             }
             System.out.println();
             i++;
