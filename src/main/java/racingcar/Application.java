@@ -3,6 +3,8 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Arrays;
+
 public class Application {
     public static void main(String[] args) {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -12,6 +14,21 @@ public class Application {
         String[] cars = input.split(",");
         int[] goCount = new int[cars.length];
         int i = 0;
+        sequence(i, count, cars, goCount);
+        int max = Arrays.stream(goCount).max().getAsInt();
+        StringBuilder sb = new StringBuilder();
+        winner(goCount, max, sb, cars);
+        System.out.println("최종 우승자 : " + sb);
+    }
+
+    private static void winner(int[] goCount, int max, StringBuilder sb, String[] cars) {
+        for(int i = 0; i < goCount.length; i++){
+            if(goCount[i] == max) sb.append(cars[i]).append(",");
+        }
+        sb.delete(sb.length() - 1, sb.length());
+    }
+
+    private static void sequence(int i, long count, String[] cars, int[] goCount) {
         while(i < count){
             for(int j = 0; j < cars.length; j++){
                 int random = Randoms.pickNumberInRange(0,9);
